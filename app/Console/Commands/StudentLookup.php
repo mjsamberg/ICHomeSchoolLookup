@@ -30,6 +30,9 @@ class StudentLookup extends Command
         $student = Student::where('uid', $this->argument('uid'))->first();
         $school_finder = new SchoolFinder();
         $school_lookup = $school_finder->get_assigned_school($student);
+        if($school_lookup['home_school']==false || $student->school->school_number!=$school_lookup['home_school']->school_number){
+            $this->error("SCHOOL ASSIGNMENT MISMATCH!");
+        }
         $this->info("Student: ".$student->first_name." ".$student->last_name);
         $this->info("Grade: ".$student->grade_level);
         $this->info("Address: ".$student->address->number." ".$student->address->street." ".$student->address->tag);
