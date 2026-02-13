@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignmentException extends Model
 {
-    protected $table = 'assigmment_exceptions';
+    protected $table = 'assignment_exceptions';
     public  $timestamps = false;
 }

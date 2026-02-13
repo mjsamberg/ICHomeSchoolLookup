@@ -1,0 +1,22 @@
+
+   ErrorException 
+
+  Attempt to read property "school" on null
+
+  at app/Services/SchoolFinder.php:22
+     18▕     }
+     19▕ 
+     20▕     public function get_assigned_school($student){
+     21▕         $results = array();
+  ➜  22▕         $results['current_school'] = $student->school;
+     23▕         if(strlen($student->Reassignment)>0){
+     24▕             $results['reassignment'] = true;
+     25▕             $results['reassignment_reason'] = $student->Reassignment;
+     26▕         }
+
+  1   app/Services/SchoolFinder.php:22
+      Illuminate\Foundation\Bootstrap\HandleExceptions::{closure:Illuminate\Foundation\Bootstrap\HandleExceptions::forwardsTo():257}()
+
+  2   app/Console/Commands/debug.php:33
+      App\Services\SchoolFinder::get_assigned_school()
+

@@ -14,7 +14,7 @@ class School extends Model
 
     public function is_terminal_grade($grade){
         foreach($this->grades as $g){
-            if($grade = $g && $g->teminal_grade==1)return true;
+            if($grade = $g && $g->terminal_grade==1)return true;
         }
         return false;
     }

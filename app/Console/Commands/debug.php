@@ -5,15 +5,16 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Services\SchoolFinder;
 use App\Models\Student;
+use App\Models\Address;
 
-class StudentLookup extends Command
+class debug extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:student-lookup  {uid : The Student UID}';
+    protected $signature = 'app:debug  {uid : The Student UID}';
 
     /**
      * The console command description.
@@ -43,5 +44,6 @@ class StudentLookup extends Command
         $this->info("Choice School: ".(isset($school_lookup['choice_school']) ? "Yes" : "No"));
         $this-> info("Home School: ".($school_lookup['home_school']!=false ? $school_lookup['home_school']->school_name : "Not Found"));
         $this-> info("Next Year School: ".($next_school!=false ? $next_school->school_name : "Not Found"));
+        print_r($student->address->toArray());
     }
 }

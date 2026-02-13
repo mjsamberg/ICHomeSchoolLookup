@@ -36,8 +36,16 @@ class SchoolFinder
     }
     
     public function get_next_school($student){
-        print_r($student->school->is_terminal_grade($student->grade));
-
+        if(!$student->school->is_terminal_grade($student->grade_level)){
+            if($student->homeless_served=='Y' || $student->school->is_choice_school){
+                return $student->school;
+            }
+            if($student->Reassignment=="Reassign-Term"||$student->Reassignment=="Employee"||$student->Reassignment=="Admit-Term"){
+                return $student->school;
+            }
+        }
+        $next_school = $this->address_service->get_school_by_grade($student->address, $student->grade->next_grade);
+        return $next_school;
         
         
     }
